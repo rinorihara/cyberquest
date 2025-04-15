@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Access Terminal</title>
   <style>
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 0.1;
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0.5;
+      }
+    }
+
     body {
       background-color: #000000;
       color: #00ff99;
@@ -14,6 +23,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
     }
     .container {
       background-color: #000000;
@@ -21,8 +31,7 @@
       padding: 30px;
       border-radius: 5px;
       box-shadow: 0 0 20px #00ff99;
-      width: 90%;
-      max-width: 500px;
+      z-index: 1;
     }
     input[type="password"] {
       background-color: #000;
@@ -52,13 +61,14 @@
     .fail {
       color: #ff5555;
     }
-    .hint-box {
-      background-color: #001a0d;
+    .date-print {
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
       color: #00ff99;
-      padding: 10px;
-      margin-top: 20px;
-      font-size: 14px;
-      border: 1px dashed #00ff99;
+      opacity: 0.3;
+      pointer-events: none;
+      animation: flicker 5s infinite;
     }
   </style>
 </head>
@@ -70,22 +80,26 @@
     <br>
     <button onclick="checkPin()" id="submitButton">Проверить</button>
     <div class="message" id="message"></div>
-    <div class="hint-box">
-      <p>Известные даты из архива:</p>
-      <ul>
-        <li>1988 — появился праздник инфобезника</li>
-        <li>0803 — день лучшей части человечества</li>        
-        <li>0425 — день запуска "первого агента"</li>
-        <li>1221 — ночь самой долгой миссии</li>
-        <li>1993 — операционная база "Lynx" создана</li>
-        <li>0310 — сбой на главном сервере</li>
-        <li>1984 — протокол "Orwell" впервые применён</li>
-		<li>2019 — появилась лучшая социальная группа </li>
-        <li>0111 — день принятия шифра "Echo"</li>
-        <li>2020 — пересборка ядра безопасности</li>
-      </ul>
-    </div>
   </div>
+
+  <!-- Даты разбросаны по фону -->
+  <div class="date-print" style="top: 10%; left: 5%;">1988 — праздник инфобезника</div>
+  <div class="date-print" style="top: 20%; left: 80%;">0803 — день человечества</div>
+  <div class="date-print" style="top: 45%; left: 10%;">0424 — запуск агента</div>
+  <div class="date-print" style="top: 50%; left: 70%;">1221 — долгая миссия</div>
+  <div class="date-print" style="top: 60%; left: 15%;">1993 — база Lynx</div>
+  <div class="date-print" style="top: 70%; left: 60%;">0310 — сбой сервера</div>
+  <div class="date-print" style="top: 80%; left: 40%;">1984 — протокол Orwell</div>
+  <div class="date-print" style="top: 15%; left: 50%;">0111 — шифр Echo</div>
+  <div class="date-print" style="top: 90%; left: 10%;">2020 — ядро безопасности</div>
+  <div class="date-print" style="top: 83%; left: 57%;">2019 — появилась лучшая социальная группа</div>
+
+  <!-- Дополнительные даты -->
+  <div class="date-print" style="top: 5%; left: 30%;">0666 — сбой алгоритма</div>
+  <div class="date-print" style="top: 25%; left: 60%;">1999 — первый вирус</div>
+  <div class="date-print" style="top: 65%; left: 75%;">1024 — контрольный модуль</div>
+  <div class="date-print" style="top: 85%; left: 20%;">0070 — агент найден</div>
+  <div class="date-print" style="top: 30%; left: 10%;">3003 — квантовый сбой</div>
 
   <script>
     const correctPin = "2019";
