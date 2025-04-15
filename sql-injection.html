@@ -78,7 +78,10 @@
         "'1' or '1' = '1'"
       ];
 
-      if (login.toLowerCase() === "agent" && allowedPasswords.includes(password)) {
+      if (login.toLowerCase() !== "agent") {
+        document.getElementById("message").className = "message fail";
+        document.getElementById("message").textContent = "NO SUCH USER IN DATABASE.";
+      } else if (allowedPasswords.includes(password)) {
         document.getElementById("message").className = "message success";
         document.getElementById("message").textContent = "ACCESS GRANTED. Следующая подсказка: 'Смотри в следах...'";
       } else {
