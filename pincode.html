@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Terminal</title>
+  <style>
+    body {
+      background-color: #000000;
+      color: #00ff99;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #000000;
+      border: 2px solid #00ff99;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px #00ff99;
+      width: 90%;
+      max-width: 500px;
+    }
+    input[type="password"] {
+      background-color: #000;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      padding: 10px;
+      font-size: 16px;
+      width: 100px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    button {
+      background-color: #000;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 20px;
+    }
+    .success {
+      color: #00ff99;
+    }
+    .fail {
+      color: #ff5555;
+    }
+    .hint-box {
+      background-color: #001a0d;
+      color: #00ff99;
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 14px;
+      border: 1px dashed #00ff99;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>TERMINAL ACCESS</h2>
+    <p>Введите PIN-код для авторизации:</p>
+    <input type="password" id="pinInput" maxlength="4" autofocus>
+    <br>
+    <button onclick="checkPin()" id="submitButton">Проверить</button>
+    <div class="message" id="message"></div>
+    <div class="hint-box">
+      <p>Известные даты из архива:</p>
+      <ul>
+        <li>1988 — появился праздник инфобезника</li>
+        <li>0803 — день лучшей части человечества</li>        
+        <li>0425 — день запуска "первого агента"</li>
+        <li>1221 — ночь самой долгой миссии</li>
+        <li>1993 — операционная база "Lynx" создана</li>
+        <li>0310 — сбой на главном сервере</li>
+        <li>1984 — протокол "Orwell" впервые применён</li>
+		<li>2019 — появилась лучшая социальная группа </li>
+        <li>0111 — день принятия шифра "Echo"</li>
+        <li>2020 — пересборка ядра безопасности</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const correctPin = "2019";
+    const message = document.getElementById("message");
+    const button = document.getElementById("submitButton");
+
+    function checkPin() {
+      const input = document.getElementById("pinInput").value;
+      if (input === correctPin) {
+        message.className = "message success";
+        message.textContent = "ACCESS GRANTED. Следующая подсказка: 'Ключ скрыт среди дат.'";
+      } else {
+        message.className = "message fail";
+        message.textContent = "ACCESS DENIED. Пауза 7 секунд...";
+        button.disabled = true;
+        setTimeout(() => {
+          message.textContent = "";
+          button.disabled = false;
+        }, 7000);
+      }
+    }
+  </script>
+</body>
+</html>
