@@ -63,7 +63,7 @@
   <div class="login-box">
     <h2>Government Access Portal</h2>
     <input type="text" id="login" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="password" placeholder="Password">
     <button onclick="checkLogin()">Log In</button>
     <div class="message" id="message"></div>
   </div>
@@ -75,7 +75,10 @@
       const allowedPasswords = [
         "' or '1'='1",
         "1' or '1' = '1",
-        "'1' or '1' = '1'"
+        "'1' or '1' = '1'",
+        "'or'1'='1",
+        "1'or'1'='1",
+        "'1'or'1'='1'"
       ];
 
       if (login.toLowerCase() !== "agent") {
